@@ -1,0 +1,55 @@
+\documentclass[12pt,tikz]{standalone}
+\usepackage{mathspec}
+
+\input{../definitions/plot_fonts.tex}
+\input{../definitions/colours.tex}
+
+\usetikzlibrary{matrix}
+\usetikzlibrary{arrows.meta}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={font=\large}]
+
+  \matrix (table) [
+    matrix of nodes,
+    row sep=3mm,
+    every node/.style={inner sep=10pt},
+    row 2 column 2/.style={opacity=.5}]
+  {
+    \begin{minipage}{5cm}
+      {\centering\color{ColourDark2}Electromagnetism\par}\vskip5pt\footnotesize
+      Carrier:\enskip photons (\,$\gamma$\,)\\
+      Couples to:\enskip $e$, $\mu$, $\tau$, $q$, $W^{\pm}$\\
+      Symmetry group:\enskip $\mathrm{U}(1)$
+    \end{minipage} &
+    \begin{minipage}{5cm}
+      {\centering\color{ColourDark2} Weak force\par}\vskip5pt\footnotesize
+      Carrier:\enskip $W^{\pm}$, $Z^0$ bosons\\
+      Couples to:\enskip $\ell_L$, $q_L$, $W^{\pm}$, $Z^0$ \\
+      Symmetry group:\enskip $\mathrm{SU}(2)$
+    \end{minipage} \\
+    \begin{minipage}{5cm}
+      {\centering\color{ColourHl1} Strong force\par}\vskip5pt\footnotesize
+      Carrier:\enskip gluons (\,$g$\,)\\
+      Couples to:\enskip $q$, $g$\\
+      Symmetry group:\enskip $\mathrm{SU}(3)$
+    \end{minipage} &
+    \begin{minipage}{5cm}
+      {\centering\color{ColourDark2} Gravity\par}\vskip5pt\footnotesize
+      Carrier:\enskip ?\\
+      Couples to:\enskip ?\\
+      Symmetry group:\enskip $\mathrm{SO}(3,1)$
+    \end{minipage} \\
+  };
+
+  \fill[ColourDark, opacity=.1] ( table-2-2.north west) rectangle (table-2-2.south east);
+
+  \draw[thick] (table-1-1.north west) rectangle ( table-1-2.south east);
+  \draw[thick] (table-1-1.north east) -- ( table-1-2.south west);
+
+  \draw[thick] ( table-2-1.north west) rectangle (table-2-2.south east);
+  \draw[ColourHl1,line width=1.5pt] ( table-2-1.north east) rectangle (table-2-1.south west);
+
+
+\end{tikzpicture}
+\end{document}

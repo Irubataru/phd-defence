@@ -5,7 +5,7 @@ MAINTEX  := presentation.tex
 MAINPDF  := $(MAINTEX:.tex=.pdf)
 
 FIGDIR   := figures
-FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
+FIGTEX   := $(wildcard $(FIGDIR)/*.tex)
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
 #PLOTDIR  := plots

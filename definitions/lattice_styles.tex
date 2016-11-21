@@ -1,0 +1,82 @@
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
+\usetikzlibrary{arrows.meta}
+
+\tikzset{
+  % style to apply some styles to each segment of a path
+  on each segment/.style={
+    decorate,
+    decoration={
+      show path construction,
+      moveto code={},
+      lineto code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+      curveto code={
+        \path [#1] (\tikzinputsegmentfirst)
+        .. controls
+        (\tikzinputsegmentsupporta) and (\tikzinputsegmentsupportb)
+        ..
+        (\tikzinputsegmentlast);
+      },
+      closepath code={
+        \path [#1]
+        (\tikzinputsegmentfirst) -- (\tikzinputsegmentlast);
+      },
+    },
+  },
+}
+
+\tikzset{
+  fermion/.style={
+    circle,
+    fill=ColourHl1,
+    inner sep=0pt,
+    minimum size=5pt
+  },
+  mid arrow/.style 2 args={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=at position #1 with {\arrow{Stealth[angle=45:6pt,round,#2]}}}},
+  },
+  mid arrow reversed/.style 2 args={
+    postaction={
+      decorate,
+      decoration={
+        markings,
+        mark=at position #1 with {\arrowreversed{Stealth[angle=45:4pt,round,#2]}}}},
+  },
+  link line/.style={
+    draw = #1, line width=1pt
+  },
+  link line/.default=ColourBase,
+  link/.style={
+    link line = #1, postaction={on each segment={mid arrow={.55}{#1}}}
+  },
+  link/.default=ColourBase,
+  link double/.style={
+    link line = #1, postaction={
+      mid arrow={.4}{ColourBase},
+      mid arrow reversed={.6}{#1}}
+  },
+  link double/.default=ColourBase,
+  plaquette/.style={
+    link = #1, postaction = {fill = #1, fill opacity=.25}
+  },
+  plaquette/.default=ColourBase,
+  primary link/.style={
+    %draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
+    draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
+      draw, shorten <= -0.2pt, line width=0.4pt, link = #1}
+  },
+  primary link/.default=ColourHl1,
+  primary plaquette/.style={
+    draw, shorten <= -1.6pt, white, line width=1.6pt, postaction={
+      draw, shorten <= -0.2pt, line width=.4pt, plaquette = #1}
+  },
+  primary plaquette/.default=ColourBase,
+}
+

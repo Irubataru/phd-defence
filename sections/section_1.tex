@@ -2,16 +2,135 @@
 
 \begin{frame}{Forces of nature}
 
+  \begin{center}
+    \includegraphics[width=\textwidth]{force_grid}
+  \end{center}
+  \vspace*{-.75\baselineskip}
+
+  \begin{overprint}
+    \onslide<1>
+      The \alert{strong force} is non-Abelian, has self interactions and is
+      non-perturbative at low energies
+    \onslide<2>
+      QCD can be treated perturbatively at \alert{high energies} due to the \alert{running} of
+      the gauge coupling
+  \end{overprint}
+
 \end{frame}
 
-\begin{frame}{QCD phase diagram}
+\begin{frame}{Putative QCD phase diagram}
+
+  \begin{center}
+    \includegraphics[width=0.85\textwidth]{qcd_phase_diag}
+  \end{center}
+
+  \vspace{-1em}
+
+  Both experimental and theoretical endeavours can probe different regions of the
+  phase diagram in different ways
   
 \end{frame}
 
 \begin{frame}{Lattice regularisation}
 
+  We regularise the quantum field theory by introducing a smallest scale, the
+  \alert{lattice spacing} (\alert{$a$})
+
+  \vspace{.75em}
+  
+  \tikz \node[fill=ColourDark!15, minimum height=1cm] {%
+    \begin{minipage}{\textwidth}\vspace*{-1ex}
+      \[
+        (x_0, x_1, x_2, x_3) \in \mathbb{R}^4
+        \:\tikz[baseline=-.5ex] \draw[-{Stealth[round]}] (0,0) -- (4mm,0);\:
+        (n_0, n_1, n_2, n_3) \in \scalemath{0.85}{\big\{0, 1, \dots, N-1\big\}^4}
+      \]
+    \end{minipage}};
+
+  \vspace{.75em}
+
+  The quark fields are placed on the \alert{lattice sites}, while the gauge fields are
+  placed on the \alert{links} connecting them
+
+  \begin{center}
+    \begin{tikzpicture}[remember picture]
+      \draw[thin, ColourDark!50] (-0.25, -0.25) grid (6.25, 1.25);
+
+      \draw[link] (1,0) -- (1,1);
+      \node[fermion] at (1,0) {};
+      \node[fermion] at (1,1) {};
+      \coordinate (propagator-bottom) at (1,-.25);
+
+      \draw[link] (2,1) -- (3,1) -- (3,0);
+      \node[fermion] at (2,1) {};
+      \node[fermion] at (3,0) {};
+
+      \draw[plaquette] (4,0) -- ++(1,0) -- ++(0,1) -- ++(-1,0) -- cycle;
+      \coordinate (plaquette-mid) at (4.5,-.25);
+    \end{tikzpicture}
+  \end{center}
+
+  \nointerlineskip
+  \begin{tikzpicture}[overlay,remember picture]
+      \draw[ColourDark,{Stealth[round]}-,thick] ([yshift=-1pt]propagator-bottom) ..
+        controls +(0,-.5cm) and +(.5cm, 0) .. ++(-.75cm, -.5cm)
+        node [left, scale=0.65, align=center] {Covariant\\derivative term};
+      \draw[ColourDark,{Stealth[round]}-,thick] ([yshift=-1pt]plaquette-mid) ..
+        controls +(0,-.5cm) and +(.5cm, 0) .. ++(-.75cm, -.5cm)
+        node [left, scale=0.65, align=center] (desc) {Gauge\\force term};
+      \node[anchor=north, scale=0.5] at (desc.south) {(also known as the
+        plaquette)};
+  \end{tikzpicture}
 \end{frame}
 
-\begin{frame}{Lattice simulations at \texorpdfstring{$\mu > 0$}{m > 0}}
+\begin{frame}{Lattice simulations at \texorpdfstring{$\mu > 0$}{m > 0}: The sign problem}
+
+  The partition function is given by the gauge integral
+
+  \[
+    \mathcal{Z} = \int \hspace*{-3pt} \mathrm{d} U_{\nu}\scalemath{0.85}{(n)} \: \det Q (\mu_B) \exp (- S_g )
+  \]
+
+  Numerical evaluation relies on \alert{importance sampling} using\\
+  the integrand as a probability distribution
+
+  \[
+    P(\mathrm{conf}) \propto \det Q (\mathrm{conf}, \mu_B) \exp (-
+    S_g(\mathrm{conf}))
+  \]
+
+  
+  \vspace{.5em}
+
+  However, for $\real(\mu_B) \neq 0: \alert{\det Q(\mu_B) \in \mathbb{C}}$, but
+  $\mathcal{Z}(\mu_B) \in \mathbb{R}$
+
+  \vspace{.5em}
+
+  This is not just a numerical obstacle, but a \alert{fundamental issue}
+  
+\end{frame}
+
+\begin{frame}{Lattice simulations at \texorpdfstring{$\mu > 0$}{m > 0}: The sign problem (sketch)}
+
+  \begin{center}
+    \includegraphics[width=.8\textwidth]{oscillating_sign}
+  \end{center}
+
+  \vspace{.5em}
+
+  Is one of the \alert{biggest obstacles} in obtaining first principle calculations of
+  dense systems
+
+\end{frame}
+
+\begin{frame}{Lattice simulations at \texorpdfstring{$\mu > 0$}{m > 0}: Lattice saturation}
+
+  \begin{center}
+    \includegraphics[width=.8\textwidth]{saturation_sketch}
+  \end{center}
+
+  As $\mu_B$ increases, the available lattice points fills up, and the
+  \alert{Pauli principle} eliminates any further dynamics
   
 \end{frame}
