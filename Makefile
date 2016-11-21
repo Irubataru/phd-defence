@@ -4,9 +4,9 @@ LATEX    := xelatex
 MAINTEX  := presentation.tex
 MAINPDF  := $(MAINTEX:.tex=.pdf)
 
-#FIGDIR   := figures
-#FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
-#FIGPDF   := $(FIGTEX:.tex=.pdf)
+FIGDIR   := figures
+FIGTEX   := $(wildcard $(FIGDIR)/chapter_*/*.tex)
+FIGPDF   := $(FIGTEX:.tex=.pdf)
 
 #PLOTDIR  := plots
 #PLOTTEX  := $(wildcard $(PLOTDIR)/chapter_*/*.tex) $(wildcard $(PLOTDIR)/appendix_*/*.tex) \
@@ -24,9 +24,9 @@ cd_and_clean = cd $(dir $(realpath $(1))); $(LATEXMK) -C $(notdir $(1))
 $(MAINPDF) : $(AUXTEX) $(MAINTEX) $(STYLETEX) $(FIGPDF) $(PLOTPDF) $(BMTRPDF)
 	$(LATEXMK) -pdf $(MAINTEX)
 
-#$(FIGPDF): %.pdf: %.tex | $(STYLETEX)
-	#cd $(dir $<); \
-	#$(LATEX) $(notdir $<)
+$(FIGPDF): %.pdf: %.tex | $(STYLETEX)
+	cd $(dir $<); \
+	$(LATEX) $(notdir $<)
 
 #$(PLOTPDF): %.pdf: %.tex | $(STYLETEX)
 	#cd $(dir $<); \

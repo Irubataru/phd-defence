@@ -10,7 +10,7 @@
 
 # Output files
 *.dvi
-thesis.pdf
+*.pdf
 
 # Corrections
 corrections/*
