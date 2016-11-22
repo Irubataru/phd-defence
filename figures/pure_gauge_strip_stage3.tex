@@ -1,0 +1,31 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{mathspec}
+
+\input{../definitions/plot_fonts.tex}
+\input{../definitions/colours.tex}
+\input{../definitions/lattice_styles.tex}
+
+\usetikzlibrary{positioning}
+
+\begin{document}
+
+\begin{tikzpicture}
+  
+  % Grid
+  % --------------------------------------------------
+  \draw[lattice] (-.25,-.25) grid[xstep=1.5, ystep=0.75] (4.75,1.75);
+  % --------------------------------------------------
+
+  \draw[thick,decorate, decoration={snake}, draw=ColourDark] (1.5,0.75) -- (3,0.75)
+    node[scale=0.75,midway,below=.25cm] {$\lambda$};
+
+  \node[circle, inner sep=0pt, minimum size=7.5pt, fill=ColourBase] at (3,0.75) (ell) {};
+  \node[scale=0.75,above right=.1cm of ell] {$L$};
+
+  \node[circle, inner sep=0pt, minimum size=7.5pt, draw=ColourBase, thick] at (1.5,0.75) (elles) {};
+  \node[scale=0.75,above left=3pt of elles] {$L^*$};
+
+\end{tikzpicture}
+
+\end{document}

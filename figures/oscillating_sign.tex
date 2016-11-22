@@ -21,9 +21,10 @@
   \draw[-{Stealth[round]},ColourDark!75, line width=.5pt] (-2,-1.5) -- (-2,1.5)
     node [above,ICantExpress,scale=0.75,anchor=south west,xshift=-.6cm] {$\real e^{-x^2 + i\mu{}x}$};
   \draw[samples=4000,ColourHl1,line width=.6pt] plot (\x, { 1.5 * exp(-\x * \x) * cos(40*\x r)});
-  \draw[samples=100,ColourBase] plot (\x, { 1.5 * exp(-\x*\x) });
+  %\draw[samples=100,ColourHl1,line width=.6pt] plot (\x, { 1.5 * exp(-\x * \x) * cos(40*\x r)});
+  \draw[samples=100,ColourHl2] plot (\x, { 1.5 * exp(-\x*\x) });
 
-  \draw[ColourBase] (1.8,1.4) -- +(0.4,0) node[right,ColourDark,scale=0.6] {$\mu = 0$};
+  \draw[ColourHl2] (1.8,1.4) -- +(0.4,0) node[right,ColourDark,scale=0.6] {$\mu = 0$};
   \draw[ColourHl1]  (1.8,1.1) -- +(0.4,0) node[right,ColourDark,scale=0.6] {$\mu = 40$};
 \end{tikzpicture}
 \end{document}

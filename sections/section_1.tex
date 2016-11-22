@@ -38,7 +38,7 @@
 
   \vspace{.75em}
   
-  \tikz \node[fill=ColourDark!15, minimum height=1cm] {%
+  \tikz \node[draw=ColourDark!50, fill=ColourDark!15, minimum height=1cm] {%
     \begin{minipage}{\textwidth}\vspace*{-1ex}
       \[
         (x_0, x_1, x_2, x_3) \in \mathbb{R}^4
@@ -49,8 +49,8 @@
 
   \vspace{.75em}
 
-  The quark fields are placed on the \alert{lattice sites}, while the gauge fields are
-  placed on the \alert{links} connecting them
+  The {\color{ColourHl1}quark fields} are placed on the {\color{ColourHl1}lattice sites}, while the {\color{ColourBase}gauge fields} are
+  placed on the {\color{ColourBase}links} connecting them
 
   \begin{center}
     \begin{tikzpicture}[remember picture]
@@ -119,8 +119,8 @@
 
   \vspace{.5em}
 
-  Is one of the \alert{biggest obstacles} in obtaining first principle calculations of
-  dense systems
+  The sign problem is one of the \alert{biggest obstacles} in obtaining first
+  principle calculations of dense systems
 
 \end{frame}
 
@@ -137,12 +137,13 @@
   
 \end{frame}
 
-
 \begin{frame}{Lattice simulations at \texorpdfstring{$\mu > 0$}{m > 0}: Lattice saturation}
 
   \begin{center}
-    \includegraphics[width=.7\textwidth]{saturation_plot}
+    \includegraphics[width=.8\textwidth]{saturation_plot}
   \end{center}
+
+  \vspace{-.2cm}
 
   Very \alert{fine lattices} and \alert{continuum extrapolations} are needed to
   access dense physics on the lattice

@@ -2,6 +2,9 @@
 \usetikzlibrary{decorations.markings,decorations.pathmorphing,decorations.pathreplacing}
 \usetikzlibrary{arrows.meta}
 
+\newlength{\deltaskip}
+\setlength{\deltaskip}{.5mm}
+
 \tikzset{
   % style to apply some styles to each segment of a path
   on each segment/.style={
@@ -29,6 +32,13 @@
 }
 
 \tikzset{
+  lattice/.style={
+    ColourDark, line width=.1mm
+  },
+  boundary/.style={
+    lattice, opacity=0.75,
+    decoration={snake,segment length=1mm, amplitude=.2mm},decorate
+  },
   fermion/.style={
     circle,
     fill=ColourHl1,

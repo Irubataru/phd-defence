@@ -64,7 +64,7 @@
         row sep=0.5pt,
       },
       clip mode=individual,
-      y post scale=0.85
+      y post scale=0.75
     ]
 
     \draw[ultra thin] (axis cs:\pgfkeysvalueof{/pgfplots/xmin},0) -- (axis cs:\pgfkeysvalueof{/pgfplots/xmax},0);
@@ -139,13 +139,6 @@
       y error index=4,
     ] {data/saturation_a08_a07.table};
     \addlegendentry{$a = 0.07 \:\mathrm{fm}$}
-
   \end{axis}
-
-  \node[scale=0.8] [right=.1cm of thelegend.north east, anchor=north west] {
-    $\begin{aligned}
-      T  &= 10 \mathrm{MeV}\\
-      m_B &= 30 \mathrm{GeV}
-    \end{aligned}$};
 \end{tikzpicture}%
 \end{document} 
