@@ -1,29 +1,190 @@
 \section{Analytic Treatment}
 
+\input{definitions/graph_styles.tex}
+
 \begin{frame}{Motivation}
-  
+
+
+  \IfFileExists{include/luscher_weisz_triviality.pdf}{%
+    \begin{center}
+      \includegraphics[page=1, trim={0 9.85cm 0 3cm}, clip, width=\textwidth]{include/luscher_weisz_triviality.pdf}
+    \end{center}
+  }{%
+    \vfill
+    \tikz \node[draw, ColourHl1, minimum height=.8\textheight] {%
+      \begin{minipage}{\textwidth}
+        \begin{center}\color{ColourHl1}%
+          Lüscher \& Weisz: $\lambda \phi^4$ triviality
+        \end{center}
+      \end{minipage}};
+    \vfill
+  }
+
 \end{frame}
 
 \begin{frame}{The linked cluster expansion}
+
+\nointerlineskip
+\begin{tikzpicture}[overlay,remember picture]
+
+  \coordinate (top left) at ([yshift=-1.04cm] current page.north west);
+  \coordinate (top right) at ([yshift=-1.04cm] current page.north east);
+  \coordinate (top) at ([yshift=-1.04cm] current page.north);
+  \coordinate (bottom left) at (current page.south west);
+  \coordinate (bottom right) at (current page.south east);
+  \coordinate (bottom) at (current page.south);
+  \coordinate (mid left) at ([yshift=-0.52cm] current page.west);
+  \coordinate (mid right) at ([yshift=-0.52cm] current page.east);
+  \coordinate (mid) at ([yshift=-0.52cm] current page.center);
+
+  \fill [ColourHl1,  opacity=0.175] (top left) rectangle (mid right);
+  \fill [ColourBase, opacity=0.175] (mid left) rectangle (bottom right);
+
+  \draw [ColourDark] (mid left) -- (mid right);
+
+  \node at ([shift={(.5cm, -.5cm)}] top left) [anchor=north west, scale=1.25] {%
+    $\lambda \phi^4$ theory};
+
+  \node at ([yshift=-.25cm] $ (top)!0.5!(mid) $) [anchor=center] {%
+    \begin{minipage}{\textwidth}
+      \[
+        \int \prod \mathrm{d} \phi(x) \, \exp \bigg\{ -S_0[\phi]
+          - \kappa \sum_{\langle x,y \rangle} \phi(x) \phi(y) \bigg\}
+      \]
+    \end{minipage}};
+
+
+  \node at ([shift={(.5cm, -.5cm)}] mid left) [anchor=north west, scale=1.25] {%
+    The effective theory};
+
+  \node at ([yshift=-.25cm] $ (mid)!0.5!(bottom) $) [anchor=center] {%
+    \begin{minipage}{\textwidth}
+      \[
+      \int \prod \mathrm{d} L(x) \, \det Q^{\mathrm{stat}} \exp \bigg\{- \lambda \sum_{\langle x, y \rangle} L(x) L^*(y) + ... \bigg\}
+      \]
+    \end{minipage}};
+  
+\end{tikzpicture}
   
 \end{frame}
 
 \begin{frame}{The two step embedding procedure}
+  \begin{tikzpicture}[overlay,remember picture]
+
+    \node[anchor=north west] (eff-title) at ([shift={(1cm, -1.5cm)}] current page.north west) {%
+      Effective theory terms};
+
+    \node[below=0.2cm of eff-title] (eff-graphs) {%
+      \includegraphics{effective_theory_graph1} \hspace{.75cm}
+      \includegraphics{effective_theory_graph2}};
+
+    \node[below=2.75cm of eff-graphs] (skel) {%
+      \includegraphics{graph_skel}};
+    \node[below=.2cm of skel] (skel-title) {%
+      LCE skeleton graph};
+
+    \draw[
+      thick, ColourDark, -{Stealth[round]},
+      postaction={decorate,decoration={text along path, text align=center, text={|\footnotesize|embedding}, raise=.75ex}},
+    ] ([yshift=-.2cm] eff-graphs.south) -- ([yshift=.2cm] skel.north);
+
+    \node [right=4.5cm of eff-graphs, yshift=.75cm] (emb1) {%
+      \includegraphics{graph_emb1}};
+
+    \node [below=.5cm of emb1] (emb2) {%
+      \includegraphics{graph_emb2}};
+
+    \node [below=.5cm of emb2] (emb3) {%
+      \includegraphics{graph_emb3}};
+
+    \node [below=.5cm of emb3] (emb4) {%
+      \includegraphics{graph_emb4}};
+
+    \draw[
+      thick, ColourDark, -{Stealth[round]},
+      postaction={
+        decorate,
+        decoration={
+          text along path, text color=ColourHl1,
+          text align={right, right indent=.9cm},
+          text={|\footnotesize|results in}, raise=.75ex
+        },
+      },
+    ] ([xshift=.5cm] skel.east) ..
+      controls +(3cm, 0) and +(-3cm, 0) ..
+      ([xshift=-.5cm] emb1.west);
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}[plain]{}
+  \begin{tikzpicture}[overlay,remember picture]
+    \node[anchor=center] at (current page.center) {\includegraphics[scale=1.6]{graphmatrix}};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{Analytical resummation}
+
+  Look to the \alert{resummed linked cluster expansion} for inspiration
+
+  \vspace{1em}
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{graph_resummation}
+  \end{center}
+
+  \vspace{.5em}
+
+  We can implement the same resummation on the level of the effective theory
+  itself, incorporating \alert{long range effects}
+
+  \[
+    \input{input/resum_formula.tex}
+\]
   
 \end{frame}
 
-\begin{frame}{Selected results}
+\begin{frame}{Results: Convergence}
+
+  \begin{center}
+    \includegraphics[width=\textwidth]{nb_of_h2_resummed_comparison}
+  \end{center}
   
 \end{frame}
 
-\begin{frame}{Analytical resummations}
+\begin{frame}{Results: Towards lighter quarks}
+
+  \vspace{.5cm}
+
+  \begin{center}\hspace*{-1cm}
+    \includegraphics[width=.9\textwidth]{nb_of_mpi_a01_r}
+  \end{center}
   
 \end{frame}
 
-\begin{frame}{Updated results}
+\begin{frame}{Results: The equation of state}
+
+  \vspace{.25cm}
+  \begin{center}
+    \includegraphics[width=\textwidth]{nb_of_press_scaled}
+  \end{center}
   
 \end{frame}
 
-\begin{frame}{Other applications}
-  
+\begin{frame}{Other applications: SU($N$)}
+
+  \begin{center}
+    \includegraphics[width=.7\textwidth]{nb_of_mu_diff_nc}
+  \end{center}
+
+  \vspace*{-.5cm}
+
+  \begin{overprint}
+    \onslide<1>
+      The procedure is easily extendable to \alert{other gauge groups}, escpecially
+      other SU($N$)
+    \onslide<2>
+      As $N$ increases the \alert{gauge sector} will once again be
+      \alert{important} and start competing with the fermionic contribution
+  \end{overprint}
+
 \end{frame}

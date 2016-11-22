@@ -1,0 +1,19 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{mathspec}
+
+\input{../../definitions/colours.tex}
+\input{../../definitions/graph_styles.tex}
+
+\begin{document}
+\begin{tikzpicture}[every node/.style={scale=.5}]
+  \node[inner=col4] (n1) {};
+  \node[inner=col4] (n2) at (60:1) {}
+    edge[col4,bend right=20] (n1);
+  \node[inner=col4] (n3) at ([shift={(300:1)}] n2) {}
+    edge[col4,bend left] (n2)
+    edge[col4,bend right] (n2);
+  \node[inner=col4] (n4) at ([shift={(60:1)}] n3) {}
+    edge[col4,bend left=20] (n3);
+\end{tikzpicture}
+\end{document}

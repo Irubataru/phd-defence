@@ -1,0 +1,42 @@
+\documentclass[11pt,tikz]{standalone}
+\usepackage{amsmath}
+\usepackage{mathspec}
+
+\begin{document}
+
+\begin{tikzpicture}
+
+  \pgfmathsetseed{100}
+
+  \foreach \x in {-1,...,5}{
+    \foreach \y in {0,...,4}{
+      \pgfmathrandominteger{\ang}{1}{360}
+      \pgfmathrandominteger{\imgnr}{1}{9}
+      \node[rotate=\ang] at (\x,\y) {\includegraphics[scale=0.4]{graph\imgnr.pdf}};
+    }
+  }
+
+  \foreach \x in {-2,...,5}{
+    \foreach \y in {0,...,3}{
+      \pgfmathrandominteger{\ang}{1}{360}
+      \pgfmathrandominteger{\imgnr}{1}{9}
+      \node[rotate=\ang] at (\x+.5,\y+.5) {\includegraphics[scale=0.3]{graph\imgnr.pdf}};
+    }
+  }
+
+  \foreach \x in {-2,...,5}{
+    \pgfmathrandominteger{\ang}{1}{360}
+    \pgfmathrandominteger{\imgnr}{1}{9}
+    \node[rotate=\ang] at (\x+.5,4.5) {\includegraphics[scale=0.3]{graph\imgnr.pdf}};
+  }
+
+  \foreach \x in {-2,...,5}{
+    \pgfmathrandominteger{\ang}{1}{360}
+    \pgfmathrandominteger{\imgnr}{1}{9}
+    \node[rotate=\ang] at (\x+.5,-.5) {\includegraphics[scale=0.3]{graph\imgnr.pdf}};
+  }
+\end{tikzpicture}
+
+\end{document}
+
+

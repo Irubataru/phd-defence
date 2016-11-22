@@ -1,0 +1,50 @@
+\begin{tikzpicture}[graph style]
+  \node[inner2] (n1) {};
+  \node[outer1] (n1o) at (n1) {};
+  \node[inner2] (n2) [position=60 degrees from n1] {};
+  \node[outer1] (n2o) at (n2) {}
+    edge[bond 1, bend left=45]  (n1o)
+    edge[bond 2, bend right=45] (n1o);
+  \node[resum node] (n3) [position=300 degrees from n2] {}
+    edge[bond 2] (n2o);
+\end{tikzpicture}
+\:=\:
+\begin{tikzpicture}[graph style]
+  \node[inner2] (n1) {};
+  \node[outer1] (n1o) at (n1) {};
+  \node[inner2] (n2) [position=60 degrees from n1] {};
+  \node[outer1] (n2o) at (n2) {}
+    edge[bond 1, bend left=45]  (n1o)
+    edge[bond 2, bend right=45] (n1o);
+  \node[inner1] (n3) [position=300 degrees from n2] {}
+    edge[bond 2] (n2o);
+\end{tikzpicture}
+\:+\:
+\begin{tikzpicture}[graph style]
+  \node[inner2] (n1) {};
+  \node[outer1] (n1o) at (n1) {};
+  \node[inner2] (n2) [position=60 degrees from n1] {};
+  \node[outer1] (n2o) at (n2) {}
+    edge[bond 1, bend left=45]  (n1o)
+    edge[bond 2, bend right=45] (n1o);
+  \node[inner1] (n3) [position=300 degrees from n2] {}
+    edge[bond 2] (n2o);
+  \node[inner1] (n4) [position=60 degrees from n3] {}
+    edge[bond 2] (n3);
+\end{tikzpicture}
+\:+\:
+\begin{tikzpicture}[graph style]
+  \node[inner2] (n1) {};
+  \node[outer1] (n1o) at (n1) {};
+  \node[inner2] (n2) [position=60 degrees from n1] {};
+  \node[outer1] (n2o) at (n2) {}
+    edge[bond 1, bend left=45]  (n1o)
+    edge[bond 2, bend right=45] (n1o);
+  \node[inner1] (n3) [position=300 degrees from n2] {}
+    edge[bond 2] (n2o);
+  \node[inner1] (n4) [position=60 degrees from n3] {}
+    edge[bond 2] (n3);
+  \node[inner1] (n5) [position=300 degrees from n4] {}
+    edge[bond 2] (n4);
+\end{tikzpicture}
+\:\dots

@@ -12,8 +12,8 @@
 *.dvi
 *.pdf
 
-# Corrections
-corrections/*
+# Included files I cannot distribute
+include/*
 
 # Beamer files
 *.snm
