@@ -1,10 +1,10 @@
+% --------------------------- %
+% tikz settings and libraries %
+% --------------------------- %
+
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{positioning, calc}
 \usetikzlibrary{decorations.text}
-
-\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
-\DeclareMathOperator{\real}{Re}
-\DeclareMathOperator{\tr}{Tr}
 
 % ---------------- %
 % Graphics options %
@@ -17,3 +17,12 @@
   {plots/section_3/}}
 
 \DeclareGraphicsExtensions{.pdf}
+
+% -------------------- %
+% Additional functions %
+% -------------------- %
+
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\tr}{Tr}
+\newcommand{\tikzmark}[1]{\tikz[overlay,remember picture] \coordinate (#1);}

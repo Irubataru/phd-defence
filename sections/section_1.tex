@@ -87,18 +87,25 @@
 
   The partition function is given by the gauge integral
 
+  \tikz \node[draw=ColourDark!50, fill=ColourDark!15, minimum height=1.25cm] {%
+    \begin{minipage}{\textwidth}
   \[
     \mathcal{Z} = \int \hspace*{-3pt} \mathrm{d} U_{\nu}\scalemath{0.85}{(n)} \: \det Q (\mu_B) \exp (- S_g )
   \]
+    \end{minipage}};
 
   Numerical evaluation relies on \alert{importance sampling} using\\
   the integrand as a probability distribution
 
+  \vspace{.5em}
+
+  \tikz \node[draw=ColourHl1!75, fill=ColourHl1!25, minimum height=1cm] {%
+    \begin{minipage}{\textwidth}\vspace{-.5\abovedisplayskip}
   \[
     P(\mathrm{conf}) \propto \det Q (\mathrm{conf}, \mu_B) \exp (-
     S_g(\mathrm{conf}))
   \]
-
+    \end{minipage}};
   
   \vspace{.5em}
 
