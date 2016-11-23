@@ -12,7 +12,7 @@ FIGTEX   := $(filter-out $(GRAPHMAT),$(wildcard $(FIGDIR)/*.tex) $(wildcard $(FI
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
 PLOTDIR  := plots
-PLOTTEX  := $(wildcard $(PLOTDIR)/section_*/*.tex)
+PLOTTEX  := $(wildcard $(PLOTDIR)/section_*/*.tex) $(wildcard $(PLOTDIR)/backup_slides/*.tex)
 PLOTPDF  := $(PLOTTEX:.tex=.pdf)
 
 STYLETEX := $(wildcard definitions/*.tex)
