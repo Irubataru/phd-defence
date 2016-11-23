@@ -4,8 +4,11 @@ LATEX    := xelatex
 MAINTEX  := presentation.tex
 MAINPDF  := $(MAINTEX:.tex=.pdf)
 
+GRAPHMAT := figures/graphs/graphmatrix.tex
+GRAPHPDF := $(GRAPHMAT:.tex=.pdf)
+
 FIGDIR   := figures
-FIGTEX   := $(wildcard $(FIGDIR)/*.tex) $(wildcard $(FIGDIR)/graphs/*.tex)
+FIGTEX   := $(filter-out $(GRAPHMAT),$(wildcard $(FIGDIR)/*.tex) $(wildcard $(FIGDIR)/graphs/*.tex))
 FIGPDF   := $(FIGTEX:.tex=.pdf)
 
 PLOTDIR  := plots
@@ -20,8 +23,12 @@ cd_and_clean = cd $(dir $(realpath $(1))); $(LATEXMK) -C $(notdir $(1))
 
 .PHONY: clean cleanthesis
 
-$(MAINPDF) : $(AUXTEX) $(MAINTEX) $(STYLETEX) $(FIGPDF) $(PLOTPDF) $(BMTRPDF)
+$(MAINPDF) : $(AUXTEX) $(MAINTEX) $(STYLETEX) $(FIGPDF) $(PLOTPDF) $(GRAPHPDF)
 	$(LATEXMK) -pdf $(MAINTEX)
+
+$(GRAPHPDF): %.pdf: %.tex | $(STYLETEX) $(FIGPDF)
+	cd $(dir $<); \
+	$(LATEX) $(notdir $<)
 
 $(FIGPDF): %.pdf: %.tex | $(STYLETEX)
 	cd $(dir $<); \
@@ -30,13 +37,8 @@ $(FIGPDF): %.pdf: %.tex | $(STYLETEX)
 $(PLOTPDF): %.pdf: %.tex | $(STYLETEX)
 	cd $(dir $<); \
 	$(LATEXMK) -pdf $(notdir $<)
-	#$(LATEXMK) -C $(notdir $<);
 
-#$(BMTRPDF): %.pdf: %.tex
-	#cd $(dir $<); \
-	#$(LATEX) $(notdir $<)
-
-clean: $(MAINTEX) $(FIGTEX)
+clean: $(MAINTEX) $(FIGTEX) $(PLOTTEX)
 	$(foreach file, $^, $(call cd_and_clean,$(file));)
 
 cleanthesis: $(MAINTEX)
