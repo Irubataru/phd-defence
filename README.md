@@ -8,7 +8,7 @@ The presentation for my Ph.D. defence, Frankfurt, 25/11/16.
 
 To compile the user requires xelatex and a fairly new version of pgf and pgfplots. The package also explicitly includes the 
 Firefox [Fira font](https://github.com/mozilla/Fira), which must be available to xelatex on compilation.
-This can however be disabled by editing the [definitions/plot_styles.tex](definitions/plot_styles.tex) (e.g. simply commenting out its contents).
+This can however be disabled by editing the [definitions/plot_fonts.tex](definitions/plot_fonts.tex) (e.g. simply commenting out its contents).
 
 The presentation used the [metropolis theme](https://github.com/matze/mtheme), which should be included in newer versions of TeX Live.
 
